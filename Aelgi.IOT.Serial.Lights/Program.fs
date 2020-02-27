@@ -2,6 +2,7 @@
 
 open System
 open System.Drawing
+open System.Threading
 open Aelgi.IOT.Serial.Lights.Core
 open Aelgi.IOT.Serial.Lights
 
@@ -60,4 +61,9 @@ let main argv =
     |> writer
     
     printfn "Hello World from F#!"
+    
+    while true do
+        Thread.Sleep 100
+        ()
+    
     0 // return an integer exit code

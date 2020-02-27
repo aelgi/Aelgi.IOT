@@ -14,7 +14,7 @@ let getAvailablePorts () =
     |> Array.toList
     
 let connectToPort (port: string) =
-    let serial = new SerialPort(port, 115200)
+    let serial = new SerialPort(port, 115200, Parity.None, 8, StopBits.One)
     serial.Open()
     serial.Write("rs")
     { SerialConnection.name = port; port = serial }
@@ -22,7 +22,8 @@ let connectToPort (port: string) =
 let handleAction (connection: SerialConnection) (action: WriteAction) =
     match action with
     | Reset -> connection.port.Write("r")
-    | Show -> connection.port.Write("s")
+    | Show ->
+        connection.port.Write("s")
     | Color c ->
         ([| byte 'c'; c.R; c.G; c.B |], 0, 3)
         |> connection.port.Write
