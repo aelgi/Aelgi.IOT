@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <Compile Include="Program.fs" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Aelgi.IOT.Serial.Lights.Core\Aelgi.IOT.Serial.Lights.Core.fsproj" />
+      <ProjectReference Include="..\Aelgi.IOT.Serial.Lights.LightsVisualizer\Aelgi.IOT.Serial.Lights.LightsVisualizer.fsproj" />
+      <ProjectReference Include="..\Aelgi.IOT.Serial.Lights.SerialWriter\Aelgi.IOT.Serial.Lights.SerialWriter.fsproj" />
+    </ItemGroup>
+
+</Project>
