@@ -25,5 +25,5 @@ let handleAction (connection: SerialConnection) (action: WriteAction) =
     | Show ->
         connection.port.Write("s")
     | Color c ->
-        ([| byte 'c'; c.R; c.G; c.B |], 0, 3)
+        ([| byte 'c'; c.R; c.G; c.B |], 0, 4)
         |> connection.port.Write
