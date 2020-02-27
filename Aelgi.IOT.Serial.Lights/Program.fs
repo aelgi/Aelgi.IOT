@@ -3,12 +3,25 @@
 open System
 open Aelgi.IOT.Serial.Lights
 
-let initialSerial () =
+let rec initialSerial () =
     let ports = SerialWriter.getAvailablePorts ()
     printfn "Available Serial Ports:"
-    ports |> List.iter (printfn " - %s")
+    ports |> List.iteri (printfn " - %d) %s")
     
-    ()
+    let pressedNumber =
+        (Console.Read ()) - (int '0')
+        
+    let selectedPort =
+        ports
+        |> List.tryItem pressedNumber
+        
+    match selectedPort with
+    | Some p ->
+        printfn "Selected: %s" p
+    | None ->
+        printfn "Failed to find port!"
+        initialSerial()
+        
 
 [<EntryPoint>]
 let main argv =
