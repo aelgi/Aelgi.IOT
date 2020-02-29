@@ -1,6 +1,7 @@
 ﻿// Learn more about F# at http://fsharp.org
 
 open System
+open System.Diagnostics
 open System.Drawing
 open System.Threading
 open Aelgi.IOT.Serial.Lights.Core
@@ -51,6 +52,19 @@ let main argv =
         |> function
             | "Development" -> true
             | _ -> false
+          
+    let stopWatch = Stopwatch.StartNew()
+    let frameLimiter () =
+        let targetFPS = int64 30
+        let targetMillisPerFrame = (int64 1000) / targetFPS
+        let elapsed = stopWatch.ElapsedMilliseconds
+        
+        let timeToPause = targetMillisPerFrame - elapsed
+        if timeToPause > (int64 5) then
+            timeToPause |> int |> Thread.Sleep
+        
+        stopWatch.Restart()
+        ()
             
     let writeAction =
         match isDevelopment with
@@ -67,7 +81,6 @@ let main argv =
     |> writer
     
     while true do
-        Thread.Sleep 100
-        ()
+        frameLimiter ()
     
     0 // return an integer exit code

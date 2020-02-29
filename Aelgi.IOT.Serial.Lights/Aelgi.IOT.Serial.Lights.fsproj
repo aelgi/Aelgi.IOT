@@ -10,6 +10,7 @@
     </ItemGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\Aelgi.IOT.Serial.Lights.Animations\Aelgi.IOT.Serial.Lights.Animations.fsproj" />
       <ProjectReference Include="..\Aelgi.IOT.Serial.Lights.Core\Aelgi.IOT.Serial.Lights.Core.fsproj" />
       <ProjectReference Include="..\Aelgi.IOT.Serial.Lights.LightsVisualizer\Aelgi.IOT.Serial.Lights.LightsVisualizer.fsproj" />
       <ProjectReference Include="..\Aelgi.IOT.Serial.Lights.SerialWriter\Aelgi.IOT.Serial.Lights.SerialWriter.fsproj" />

@@ -12,6 +12,8 @@ Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Aelgi.IOT.Serial.Lights.Cor
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Aelgi.IOT.Serial.Lights.LightsVisualizer", "Aelgi.IOT.Serial.Lights.LightsVisualizer\Aelgi.IOT.Serial.Lights.LightsVisualizer.fsproj", "{CA5F9587-C73C-4742-833F-4CDCD053E4E2}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Aelgi.IOT.Serial.Lights.Animations", "Aelgi.IOT.Serial.Lights.Animations\Aelgi.IOT.Serial.Lights.Animations.fsproj", "{10139EA1-53DA-42FF-9EB8-62F01AA2757D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,6 +36,10 @@ Global
 		{CA5F9587-C73C-4742-833F-4CDCD053E4E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CA5F9587-C73C-4742-833F-4CDCD053E4E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CA5F9587-C73C-4742-833F-4CDCD053E4E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10139EA1-53DA-42FF-9EB8-62F01AA2757D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10139EA1-53DA-42FF-9EB8-62F01AA2757D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10139EA1-53DA-42FF-9EB8-62F01AA2757D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10139EA1-53DA-42FF-9EB8-62F01AA2757D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{50703D0A-0F54-46F4-83A5-14254F7E940F} = {6F3186F1-2A18-4807-B82A-41EAD94EBB9A}
@@ -41,5 +47,6 @@ Global
 		{A79B72B8-A49E-46C8-8A21-C0C92B294E6D} = {50703D0A-0F54-46F4-83A5-14254F7E940F}
 		{96216C8B-68BA-4CF2-ABFC-AA718B6BE509} = {50703D0A-0F54-46F4-83A5-14254F7E940F}
 		{CA5F9587-C73C-4742-833F-4CDCD053E4E2} = {50703D0A-0F54-46F4-83A5-14254F7E940F}
+		{10139EA1-53DA-42FF-9EB8-62F01AA2757D} = {50703D0A-0F54-46F4-83A5-14254F7E940F}
 	EndGlobalSection
 EndGlobal
