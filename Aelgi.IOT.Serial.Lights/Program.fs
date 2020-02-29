@@ -12,6 +12,13 @@ type CurrentAnimation =
     | HueWave
     | Blue
     | Purple
+    
+let processInputToAnimation (c: char) =
+    match c with
+    | 'h' | '1' -> HueWave |> Some
+    | 'b' | '0' -> Blue |> Some
+    | 'p' -> Purple |> Some
+    | _ -> None
 
 let rec initialSerial () =
     printf "Loading available serial ports..."
@@ -104,6 +111,18 @@ let main argv =
             | Purple -> purple stripCount
             
         frames |> writer
+        
+        let nextAnimation =
+            match Console.KeyAvailable with
+            | true -> Console.ReadKey().KeyChar |> Some
+            | false -> None
+            |> Option.bind (processInputToAnimation)
+        match nextAnimation with
+        | Some a ->
+            currentAnimation <- a
+            ()
+        | None -> ()
+            
         
         frameLimiter ()
     
