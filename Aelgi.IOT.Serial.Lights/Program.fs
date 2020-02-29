@@ -71,7 +71,7 @@ let main argv =
           
     let stopWatch = Stopwatch.StartNew()
     let frameLimiter () =
-        let targetFPS = int64 5
+        let targetFPS = int64 20
         let targetMillisPerFrame = (int64 1000) / targetFPS
         let elapsed = stopWatch.ElapsedMilliseconds
         
