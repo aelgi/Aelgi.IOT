@@ -17,7 +17,7 @@ let render (state: HueWaveState) =
         
     let nextState = { state with currentHue = currentHue }
     
-    let nextColorCommand = hsv currentHue 100 100 |> Color
+    let nextColorCommand = hsv currentHue 1. 1. |> Color
     let showCommand = Show
     
     (showCommand::[nextColorCommand], nextState)

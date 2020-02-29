@@ -33,7 +33,8 @@ module Helpers =
                 | _ -> (v, v, v)
                 
             let clamp =
-                function
+                (*) 255.0
+                >> function
                     | i when i < 0. -> 0
                     | i when i > 255. -> 255
                     | i -> i |> int
@@ -41,4 +42,4 @@ module Helpers =
             (r |> clamp, g |> clamp, b |> clamp) |> System.Drawing.Color.FromArgb
             
     let hsv hue sat value =
-        hsvDouble (hue |> double) (sat |> double) (value |> double)
+        hsvDouble (hue |> double) sat value
