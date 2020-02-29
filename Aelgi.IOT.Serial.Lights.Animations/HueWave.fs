@@ -13,7 +13,7 @@ let initialState = { HueWaveState.currentHue = 0 }
 let render (state: HueWaveState) =
     let currentHue =
         if state.currentHue > 360 then 0
-        else state.currentHue + 20
+        else state.currentHue + 5
         
     let nextState = { state with currentHue = currentHue }
     

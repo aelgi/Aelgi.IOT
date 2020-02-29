@@ -6,6 +6,12 @@ open System.Drawing
 open System.Threading
 open Aelgi.IOT.Serial.Lights.Core
 open Aelgi.IOT.Serial.Lights
+open Aelgi.IOT.Serial.Lights.Animations
+
+type CurrentAnimation =
+    | HueWave
+    | Blue
+    | Purple
 
 let rec initialSerial () =
     printf "Loading available serial ports..."
@@ -37,11 +43,14 @@ let initialVisualisation stripCount =
         
     render
     
-let generateOpening (stripCount: int) =
+let showColor (color: Color) (stripCount: int) =
     [Reset]@[
         for _ = 1 to stripCount do
-            yield Color.SkyBlue |> Color
+            yield color |> Color
     ]@[Show]
+    
+let blue = showColor Color.SkyBlue
+let purple = showColor Color.Purple
 
 [<EntryPoint>]
 let main argv =
@@ -77,10 +86,25 @@ let main argv =
     let writer =
         List.iter writeAction
         
-    generateOpening stripCount
-    |> writer
-    
+    let hueRender =
+        let mutable state = HueWave.initialState
+        let render () =
+            let (actions, newState) = HueWave.render state
+            state <- newState
+            actions
+        render
+        
+    let mutable currentAnimation = HueWave
+        
     while true do
+        let frames =
+            match currentAnimation with
+            | HueWave -> hueRender()
+            | Blue -> blue stripCount
+            | Purple -> purple stripCount
+            
+        frames |> writer
+        
         frameLimiter ()
     
     0 // return an integer exit code

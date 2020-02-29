@@ -28,7 +28,7 @@ let handleAction (state: VisualizerState) (action: WriteAction) =
     | Show ->
         state.StripColors
         |> List.iter (" ".PastelBg >> printf "%s")
-        printfn "\r"
+        printf "\r"
         
         manageState state
     | Color c ->
