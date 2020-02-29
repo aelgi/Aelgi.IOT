@@ -26,10 +26,16 @@ let rec initialSerial () =
     | None ->
         printfn "Failed to find port!"
         initialSerial()
+
+let initialVisualisation stripCount =
+    let mutable state = LightsVisualizer.initializeVisualizer stripCount
+    
+    let render action =
+        state <- LightsVisualizer.handleAction state action
+        ()
         
-let initialVisualisation () =
-    printfn "Visualisation mode enabled..."
-        
+    render
+    
 let generateOpening (stripCount: int) =
     [Reset]@[
         for _ = 1 to stripCount do
@@ -49,8 +55,8 @@ let main argv =
     let writeAction =
         match isDevelopment with
         | true ->
-            initialVisualisation()
-            LightsVisualizer.handleAction
+            let handler = initialVisualisation stripCount
+            handler
         | false ->
             let serial = initialSerial()
             SerialWriter.handleAction serial
@@ -59,8 +65,6 @@ let main argv =
         
     generateOpening stripCount
     |> writer
-    
-    printfn "Hello World from F#!"
     
     while true do
         Thread.Sleep 100
