@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/extResources" t="IncludeRecursive" />
-    <e p="$USER_HOME$/Library/Caches/Rider2019.3/resharper-host/local/Transient/ReSharperHost/v193/SolutionCaches/_Aelgi.IOT.699795737.00" t="ExcludeRecursive" />
-    <e p="$APPLICATION_CONFIG_DIR$/scratches" t="IncludeRecursive" />
-    <e p="$PROJECT_DIR$" t="IncludeFlat">
+    <e p="C:\Users\dfitz\.Rider2019.3\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\dfitz\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\dfitz\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Aelgi.IOT.1544308732.00" t="ExcludeRecursive" />
+    <e p="C:\Users\dfitz\Documents\git\Aelgi.IOT" t="IncludeFlat">
       <e p="Aelgi.IOT.Serial.Lights" t="IncludeRecursive">
         <e p="Aelgi.IOT.Serial.Lights.fsproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
@@ -14,6 +14,7 @@
       <e p="Aelgi.IOT.Serial.Lights.Animations" t="IncludeRecursive">
         <e p="Aelgi.IOT.Serial.Lights.Animations.fsproj" t="IncludeRecursive" />
         <e p="bin" t="ExcludeRecursive" />
+        <e p="Fireplace.fs" t="Include" />
         <e p="HueWave.fs" t="Include" />
         <e p="Library.fs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />

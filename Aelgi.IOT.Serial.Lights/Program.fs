@@ -10,6 +10,7 @@ open Aelgi.IOT.Serial.Lights.Animations
 
 type CurrentAnimation =
     | HueWave
+    | Fireplace
     | Blue
     | Purple
     | CustomHue of int
@@ -17,6 +18,7 @@ type CurrentAnimation =
 let processInputToAnimation (c: char) =
     match c with
     | 'h' | '1' -> HueWave |> Some
+    | 'f' | '2' -> Fireplace |> Some
     | 'b' | '0' -> Blue |> Some
     | 'p' -> Purple |> Some
     | 'c' -> Console.ReadLine() |> int |> CustomHue |> Some
@@ -104,12 +106,21 @@ let main argv =
             actions
         render
         
-    let mutable currentAnimation = HueWave
+    let fireplaceRender =
+        let mutable state = Fireplace.initialState 8 stripCount
+        let render () =
+            let (actions, newState) = Fireplace.render state
+            state <- newState
+            actions
+        render
+        
+    let mutable currentAnimation = Fireplace
         
     while true do
         let frames =
             match currentAnimation with
             | HueWave -> hueRender()
+            | Fireplace -> fireplaceRender()
             | Blue -> blue stripCount
             | Purple -> purple stripCount
             | CustomHue h -> customHue stripCount h
