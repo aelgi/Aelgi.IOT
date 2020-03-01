@@ -79,7 +79,7 @@ let handleFireStrength (fire: Fire) =
         
     let newEvolution =
         match newValue with
-        | i when i > 0.8 -> Dying |> Some
+        | i when i > 0.99 -> Dying |> Some
         | _ -> None
         |> Option.defaultValue fire.Evolution
             
