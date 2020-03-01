@@ -66,7 +66,7 @@ let customHue stripCount (hue: int) = stripCount |> (hsv hue 1. 1. |> showColor)
 
 [<EntryPoint>]
 let main argv =
-    let stripCount = 19
+    let stripCount = 20
     let isDevelopment =
         "DOTNET_ENVIRONMENT"
         |> Environment.GetEnvironmentVariable
