@@ -12,12 +12,14 @@ type CurrentAnimation =
     | HueWave
     | Blue
     | Purple
+    | CustomHue of int
     
 let processInputToAnimation (c: char) =
     match c with
     | 'h' | '1' -> HueWave |> Some
     | 'b' | '0' -> Blue |> Some
     | 'p' -> Purple |> Some
+    | 'c' -> Console.ReadLine() |> int |> CustomHue |> Some
     | _ -> None
 
 let rec initialSerial () =
@@ -58,6 +60,7 @@ let showColor (color: Color) (stripCount: int) =
     
 let blue = showColor Color.SkyBlue
 let purple = showColor Color.Purple
+let customHue stripCount (hue: int) = stripCount |> (hsv hue 1. 1. |> showColor)
 
 [<EntryPoint>]
 let main argv =
@@ -109,6 +112,7 @@ let main argv =
             | HueWave -> hueRender()
             | Blue -> blue stripCount
             | Purple -> purple stripCount
+            | CustomHue h -> customHue stripCount h
             
         frames |> writer
         
