@@ -107,7 +107,7 @@ let main argv =
         render
         
     let fireplaceRender =
-        let mutable state = Fireplace.initialState 8 stripCount
+        let mutable state = Fireplace.initialState 14 stripCount
         let render () =
             let (actions, newState) = Fireplace.render state
             state <- newState

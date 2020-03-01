@@ -27,9 +27,17 @@ let initialState (numFlames: int) (stripLength: int) =
         MaxFires = numFlames
         StripLength = stripLength
     }
+    
+let rec newLocation (locs: int list) (posMax: int) =
+    let location = rnd.Next posMax
+    locs
+    |> List.tryFind ((=) location)
+    |> function
+        | Some _ -> newLocation locs posMax
+        | None -> location
 
-let newRandomFlame (stripLength: int) =
-    let location = rnd.Next stripLength
+let newRandomFlame (state: FireplaceState) (stripLength: int) =
+    let location = newLocation (state.CurrentFires |> List.map (fun x -> x.Location)) stripLength
     let strength = rnd.NextDouble() / 15.
     {
         Fire.Location = location
@@ -43,7 +51,7 @@ let spawnOnShortage (state: FireplaceState) =
     |> List.length
     |> function
         | length when length < state.MaxFires ->
-            { state with CurrentFires = (newRandomFlame state.StripLength)::state.CurrentFires }
+            { state with CurrentFires = (newRandomFlame state state.StripLength)::state.CurrentFires }
         | _ -> state
         
 let killOnDeath (state: FireplaceState) =
