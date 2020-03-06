@@ -115,7 +115,7 @@ let main argv =
         render
         
     let lifeForceRender =
-        let mutable state = LifeBlob.initialState 5 stripCount
+        let mutable state = LifeBlob.initialState 10 stripCount
         let render () =
             let (actions, newState) = LifeBlob.render state
             state <- newState
