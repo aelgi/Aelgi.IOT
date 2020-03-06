@@ -5,9 +5,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Compile Include="Library.fs" />
         <Compile Include="HueWave.fs" />
         <Compile Include="Fireplace.fs" />
+        <Compile Include="LifeBlob.fs" />
     </ItemGroup>
 
     <ItemGroup>

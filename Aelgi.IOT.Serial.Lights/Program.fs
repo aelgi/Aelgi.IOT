@@ -1,6 +1,4 @@
-﻿// Learn more about F# at http://fsharp.org
-
-open System
+﻿open System
 open System.Diagnostics
 open System.Drawing
 open System.Threading
@@ -11,6 +9,7 @@ open Aelgi.IOT.Serial.Lights.Animations
 type CurrentAnimation =
     | HueWave
     | Fireplace
+    | LifeForce
     | Blue
     | Purple
     | CustomHue of int
@@ -19,6 +18,7 @@ let processInputToAnimation (c: char) =
     match c with
     | 'h' | '1' -> HueWave |> Some
     | 'f' | '2' -> Fireplace |> Some
+    | 'l' | '3' -> LifeForce |> Some
     | 'b' | '0' -> Blue |> Some
     | 'p' -> Purple |> Some
     | 'c' -> Console.ReadLine() |> int |> CustomHue |> Some
@@ -114,13 +114,22 @@ let main argv =
             actions
         render
         
-    let mutable currentAnimation = Fireplace
+    let lifeForceRender =
+        let mutable state = LifeBlob.initialState 5 stripCount
+        let render () =
+            let (actions, newState) = LifeBlob.render state
+            state <- newState
+            actions
+        render
+        
+    let mutable currentAnimation = LifeForce
         
     while true do
         let frames =
             match currentAnimation with
             | HueWave -> hueRender()
             | Fireplace -> fireplaceRender()
+            | LifeForce -> lifeForceRender()
             | Blue -> blue stripCount
             | Purple -> purple stripCount
             | CustomHue h -> customHue stripCount h

@@ -16,7 +16,7 @@
         <e p="bin" t="ExcludeRecursive" />
         <e p="Fireplace.fs" t="Include" />
         <e p="HueWave.fs" t="Include" />
-        <e p="Library.fs" t="Include" />
+        <e p="LifeBlob.fs" t="Include" />
         <e p="obj" t="ExcludeRecursive" />
       </e>
       <e p="Aelgi.IOT.Serial.Lights.Core" t="IncludeRecursive">
